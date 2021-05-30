@@ -19,7 +19,7 @@ add_action('admin_menu','todo_plugin_settings_page');
 
 
 
-
+// Callback function loading a view
 
 function todo_markup(){
     if ( !current_user_can('manage_options') ) {

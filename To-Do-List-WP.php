@@ -16,8 +16,8 @@ if ( ! defined( 'WPINC' ) ) {
 define('TODO_URL', plugin_dir_url(__FILE__));
 define('TODO_DIR', plugin_dir_path(__FILE__));
 
-include(plugin_dir_path(__FILE__).'includes/wptodo-styles.php');
-include(plugin_dir_path(__FILE__).'includes/wptodo-scripts.php');
+include(plugin_dir_path(__FILE__).'includes/todo-styles.php');
+include(plugin_dir_path(__FILE__).'includes/todo-scripts.php');
 include(plugin_dir_path(__FILE__).'includes/todo-menus.php');
-include(plugin_dir_path(__FILE__).'includes/wptodo-options.php');
-include(plugin_dir_path(__FILE__).'includes/wptodo-api.php');
+include(plugin_dir_path(__FILE__).'includes/todo-options.php');
+include(plugin_dir_path(__FILE__).'includes/todo-api.php');
