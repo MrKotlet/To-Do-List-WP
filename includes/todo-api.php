@@ -3,21 +3,25 @@
 
 function manage_tasks_ajax_action(){
 
+    $nonce = $_REQUEST['nonce'];
 
+    if ( ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
+        die( 'Nonce value cannot be verified.' );
+    }
 
 
     if($_REQUEST['name']!== ''&& $_REQUEST['key'] === '10000'){
-        create_new_task($_REQUEST['name']);
+        create_new_task(sanitize_key($_REQUEST['name']));
     }
     if($_REQUEST['name']!== ''&& $_REQUEST['key'] !== '10000'){
-        edit_task($_REQUEST['name'],$_REQUEST['key']);
+        edit_task(sanitize_key($_REQUEST['name']), sanitize_key($_REQUEST['key']));
     }
 
     if($_REQUEST['name']=== ''&& $_REQUEST['key'] !== '10000' && $_REQUEST['type']!== ''){
        if ($_REQUEST['type']=== 'delete'){
-           delete_task($_REQUEST['key']);
+           delete_task(sanitize_key($_REQUEST['key']));
        }elseif ($_REQUEST['type']=== 'change'){
-           toggle_task_status($_REQUEST['key']);
+           toggle_task_status(sanitize_key($_REQUEST['key']));
        }
     }
 

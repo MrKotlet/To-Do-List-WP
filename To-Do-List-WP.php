@@ -2,6 +2,7 @@
 /*
 Plugin Name: To-Do-List-WP
 Author: Jan Kotlarski
+Description: Simple To Do list plugin
 License: GPLv2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: todolist
