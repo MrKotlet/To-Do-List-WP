@@ -5,7 +5,7 @@ function createNewTask(event) {
 
     if (event.key === 'Enter' && newTaskInput.value !== '' && otherTaskInputs.length === 0) {
         const taskList = document.getElementById('task-list')
-        const inputValue = newTaskInput.value;
+        const inputValue = sanitizeHTML(newTaskInput.value);
 
         manageTasksAjax(event, inputValue);
 
@@ -65,7 +65,7 @@ function editTask(event) {
     const taskInput = this.parentNode.parentNode.querySelector('input');
     const taskName = this.parentNode.parentNode.querySelector('span');
     if (event.key === 'Enter' && taskInput.value !== '') {
-        taskName.textContent = taskInput.value;
+        taskName.textContent = sanitizeHTML(taskInput.value);
         const keyValue = taskInput.dataset.key
         manageTasksAjax(event, taskInput.value, keyValue,)
 
@@ -148,3 +148,11 @@ function addListeners() {
 }
 
 window.addEventListener('load', addListeners)
+
+//sanitizer helper function
+
+function sanitizeHTML (str) {
+    return str.replace(/javascript:/gi, '').replace(/[^\w-_. ]/gi, function (c) {
+        return `&#${c.charCodeAt(0)};`;
+    });
+}
