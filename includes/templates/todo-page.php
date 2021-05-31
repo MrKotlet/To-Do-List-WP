@@ -19,12 +19,13 @@
 
                             <li class="list-group-item d-flex justify-content-between align-items-center m-0">
                                 <div>
-                                    <i class="fas fa-check text-success mx-2 toggle-task-done" role="button"></i>
+
                                     <input type="text" class="d-none" data-key="<?php echo $key ?>">
                                     <span><?php echo esc_html($task['name']) ?></span>
 
                                 </div>
                                 <div>
+                                    <button class="btn btn-success mx-4 toggle-task-done">Done</button>
                                     <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
                                 </div>
                             </li>
@@ -39,15 +40,16 @@
                         foreach ($tasks as $key => $task):
                             if ($task['done']):
                                 ?>
-                            <li class="list-group-item d-flex justify-content-between align-items-center m-0 ">
-                                <div class="text-decoration-line-through text-secondary ">
-                                    <i class="fas fa-times text-danger mx-2 toggle-task-done" role="button"></i>
+                            <li class="list-group-item d-flex justify-content-between align-items-center m-0 text-decoration-line-through text-secondary ">
+                                <div>
+
                                     <input type="text" class="d-none" data-key="<?php echo $key ?>">
                                     <span><?php echo esc_html($task['name']) ?></span>
 
                                 </div>
-                                <div>
-                                    <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
+                                <div >
+                                    <button class="btn btn-outline-secondary mx-4 toggle-task-done">Not Done</button>
+                                    <i class="fas fa-pen mx-2 task-option "></i><i class="fas fa-trash task-option"></i>
                                 </div>
                             </li>
 

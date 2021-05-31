@@ -17,12 +17,12 @@ function createNewTask(event) {
 
         const newTask = document.createElement('li');
         newTask.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'm-0');
-        newTask.innerHTML = ` <div>
-                            <i class="fas fa-check text-success mx-2 toggle-task-done" role="button"></i>
-                                    <span>${inputValue}</span>
+        newTask.innerHTML = ` <div>     
                             <input type="text" class="d-none" data-key="${lastTaskKey}">
+                            <span>${inputValue}</span>
                         </div>
                         <div>
+                        <button class="btn btn-success mx-4 toggle-task-done">Done</button>
                             <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
                         </div>`;
 
@@ -105,11 +105,17 @@ function toggleTaskStatus(listItem) {
 
 
 function toggleDoneStatus(event) {
-    this.classList.toggle('fa-check');
-    this.classList.toggle('text-success');
-    this.classList.toggle('fa-times');
-    this.classList.toggle('text-danger');
-    const keyValue = this.parentNode.querySelector('input').dataset.key;
+    if (this.classList.contains('btn-success')) {
+        this.textContent = 'Not Done';
+    } else {
+        this.textContent = 'Done';
+    }
+
+    this.classList.toggle('btn-success');
+    this.classList.toggle('btn-outline-secondary');
+
+
+    const keyValue = this.parentNode.parentNode.querySelector('input').dataset.key;
     manageTasksAjax(event, '', keyValue, 'change');
     toggleTaskStatus(this.parentNode.parentNode)
 }
