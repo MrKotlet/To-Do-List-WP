@@ -2,7 +2,8 @@
 
 
 // Register scripts
-function todo_enqueue_admin_scripts($hook){
+function todo_enqueue_admin_scripts($hook)
+{
 
     wp_register_script(
         'todo-plugin-bootstrap',
@@ -11,24 +12,33 @@ function todo_enqueue_admin_scripts($hook){
         time()
     );
     wp_register_script(
-        'todo-plugin-main',
-        TODO_URL.'assets/js/todo-main.js',
+        'todo-plugin-ajax',
+        TODO_URL . 'assets/js/todo-ajax.js',
         ['jquery'],
         time()
     );
 
-    wp_localize_script('testplugin-admin','dupa',[
-        'hook'=>$hook,
+    wp_register_script(
+        'todo-plugin-main',
+        TODO_URL . 'assets/js/todo-main.js',
+        ['todo-plugin-ajax'],
+        time()
+    );
 
-    ]);
-//Loads scripts only on To Do LIst plugin page
-    if('toplevel_page_todolist'===$hook){
-        wp_enqueue_script('todo-plugin-bootstrap');
-        wp_enqueue_script('todo-plugin-main');
-    }
+    wp_localize_script(
+        'todo-plugin-ajax',
+        'todo_ajax_obj',
+        array(
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'nonce' => wp_create_nonce('ajax-nonce')
+        )
+    );
 
+    wp_enqueue_script('todo-plugin-bootstrap');
+    wp_enqueue_script('todo-plugin-ajax');
+    wp_enqueue_script('todo-plugin-main');
 
 
 }
 
-add_action('admin_enqueue_scripts','todo_enqueue_admin_scripts',100);
+add_action('admin_enqueue_scripts', 'todo_enqueue_admin_scripts', 100);
