@@ -10,30 +10,40 @@
 
                 <hr>
                 <ul id="task-list" class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center m-0">
-                        <div>
-                            <i class="fas fa-check text-success mx-2 toggle-task-done" role="button"></i>
-                            <input type="text" class="d-none">
-                            <span>Take out the trash</span>
+                    <?php
+                    $tasks = get_option('todo_task_list');
 
-                        </div>
-                        <div>
-                            <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center m-0 ">
-                        <div class="text-decoration-line-through text-secondary ">
-                            <i class="fas fa-times text-danger mx-2 toggle-task-done" role="button"></i>
-                            <input type="text" class="d-none">
-                            <span>make up bed</span>
+                    foreach ($tasks as $key => $task):
+                        if (!$task['done']):
 
-                        </div>
-                        <div>
-                            <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
-                        </div>
-                    </li>
+                            ?>
 
+                            <li class="list-group-item d-flex justify-content-between align-items-center m-0">
+                                <div>
+                                    <i class="fas fa-check text-success mx-2 toggle-task-done" role="button"></i>
+                                    <input type="text" class="d-none" data-key="<?php echo $key ?>">
+                                    <span><?php echo esc_html($task['name']) ?></span>
 
+                                </div>
+                                <div>
+                                    <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
+                                </div>
+                            </li>
+
+                        <?php else: ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center m-0 ">
+                                <div class="text-decoration-line-through text-secondary ">
+                                    <i class="fas fa-times text-danger mx-2 toggle-task-done" role="button"></i>
+                                    <input type="text" class="d-none" data-key="<?php echo $key ?>">
+                                    <span><?php echo esc_html($task['name']) ?></span>
+
+                                </div>
+                                <div>
+                                    <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
+                                </div>
+                            </li>
+
+                        <?php endif;endforeach; ?>
 
                 </ul>
 
