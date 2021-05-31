@@ -1,0 +1,86 @@
+@import url("https://use.typekit.net/row7rwf.css");
+
+body {
+    --main-font: zeitung, sans-serif;
+    --primary-color: #cb5858;
+    --secondary-color: #6dbb57;
+    --inactive-color: grey;
+
+}
+
+div.todolist {
+    font-family: var(--main-font);
+}
+
+h1.text-center {
+    font-size: 3rem;
+}
+
+h1.text-center, h3.list-title {
+
+    font-weight: bold;
+
+}
+
+h1.text-center:first-letter, h3.list-title:first-letter {
+    color: var(--primary-color);
+}
+
+hr {
+    border: solid;
+    border-width: 1px;
+    border-color: var(--primary-color);
+    opacity: 1;
+}
+
+
+div.todolist input {
+    border: none;
+    border-radius: 0;
+    border-bottom: var(--inactive-color) 1px solid;
+    color: var(--inactive-color);
+
+
+}
+
+div.todolist input.add-todo-task {
+    font-size: 1.8rem;
+}
+
+div.todolist input:focus {
+    outline: 0 !important;
+    box-shadow: none;
+    border-bottom: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+}
+
+ul#task-list, ul#task-list-2 {
+    font-size: 1.3rem;
+}
+
+ul#task-list i:hover{
+    color: var(--inactive-color);
+}
+
+ul#task-list-2 span {
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+ul#task-list-2 i:hover{
+    color: black;
+}
+
+div.todolist i {
+    margin-left: 20px;
+}
+
+i.fa-pen {
+    text-decoration: none !important;
+}
+
+button.btn-outline-success{
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+

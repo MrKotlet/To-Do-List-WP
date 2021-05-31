@@ -8,7 +8,7 @@
                 <?php   $tasks = get_option('todo_task_list');?>
                 <input type="text" class="form-control add-todo-task" placeholder="Write Todo and hit enter" data-count="<?php echo array_key_last($tasks)?>">
                 <br>
-                <h3>Your Tasks</h3>
+                <h3 class="list-title">Your Tasks</h3>
 
                 <hr>
                 <ul id="task-list" class="list-group">
@@ -25,14 +25,14 @@
 
                                 </div>
                                 <div>
-                                    <button class="btn btn-success mx-4 toggle-task-done">Done</button>
-                                    <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
+                                    <button class="btn btn-outline-success mx-4 toggle-task-done">Done</button>
+                                    <i class="fas fa-pen mx-2 task-option" role="button"></i><i class="fas fa-trash task-option" role="button"></i>
                                 </div>
                             </li>
                     <?php endif;endforeach;?>
                 </ul>
                 <br>
-                <h3>Done Tasks</h3>
+                <h3 class="list-title">Done Tasks</h3>
                 <hr>
 
                     <ul id="task-list-2" class="list-group">
@@ -40,7 +40,7 @@
                         foreach ($tasks as $key => $task):
                             if ($task['done']):
                                 ?>
-                            <li class="list-group-item d-flex justify-content-between align-items-center m-0 text-decoration-line-through text-secondary ">
+                            <li class="list-group-item d-flex justify-content-between align-items-center m-0  text-secondary ">
                                 <div>
 
                                     <input type="text" class="d-none" data-key="<?php echo $key ?>">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div >
                                     <button class="btn btn-outline-secondary mx-4 toggle-task-done">Not Done</button>
-                                    <i class="fas fa-pen mx-2 task-option "></i><i class="fas fa-trash task-option"></i>
+                                    <i class="fas fa-pen mx-2 task-option" role="button"></i><i class="fas fa-trash task-option" role="button"></i>
                                 </div>
                             </li>
 

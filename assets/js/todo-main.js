@@ -22,7 +22,7 @@ function createNewTask(event) {
                             <span>${inputValue}</span>
                         </div>
                         <div>
-                        <button class="btn btn-success mx-4 toggle-task-done">Done</button>
+                        <button class="btn btn-outline-success mx-4 toggle-task-done">Done</button>
                             <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
                         </div>`;
 
@@ -89,29 +89,34 @@ function toggleTaskStatus(listItem) {
     const doneList = document.getElementById('task-list-2');
     const notDoneList = document.getElementById('task-list');
 
+
+
     if (listItem.classList.contains('text-secondary')) {
+
+
+
         doneList.removeChild(listItem);
-        notDoneList.appendChild(listItem)
+        notDoneList.appendChild(listItem);
     } else {
         notDoneList.removeChild(listItem);
         doneList.appendChild(listItem);
 
     }
 
-    listItem.classList.toggle('text-decoration-line-through');
+
     listItem.classList.toggle('text-secondary');
 
 }
 
 
 function toggleDoneStatus(event) {
-    if (this.classList.contains('btn-success')) {
+    if (this.classList.contains('btn-outline-success')) {
         this.textContent = 'Not Done';
     } else {
         this.textContent = 'Done';
     }
 
-    this.classList.toggle('btn-success');
+    this.classList.toggle('btn-outline-success');
     this.classList.toggle('btn-outline-secondary');
 
 
