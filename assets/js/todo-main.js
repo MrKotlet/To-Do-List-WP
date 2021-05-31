@@ -1,4 +1,4 @@
-//this function creates new task and displays it on the list
+//this function creates new task and displays it on the lista
 function createNewTask(event) {
     const newTaskInput = document.querySelector('input.add-todo-task');
     const otherTaskInputs = document.querySelectorAll('.active-input');
