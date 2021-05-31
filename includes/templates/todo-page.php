@@ -7,7 +7,8 @@
                 <h1 class="text-center my-4">Todo List</h1>
                 <?php   $tasks = get_option('todo_task_list');?>
                 <input type="text" class="form-control add-todo-task" placeholder="Write Todo and hit enter" data-count="<?php echo array_key_last($tasks)?>">
-
+                <br>
+                <h3>Your Tasks</h3>
 
                 <hr>
                 <ul id="task-list" class="list-group">
@@ -36,7 +37,7 @@
                     <ul id="task-list-2" class="list-group">
                         <?php
                         foreach ($tasks as $key => $task):
-                            if (!$task['done']):
+                            if ($task['done']):
                                 ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center m-0 ">
                                 <div class="text-decoration-line-through text-secondary ">
