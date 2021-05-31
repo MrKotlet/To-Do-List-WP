@@ -7,6 +7,9 @@ function createNewTask(event) {
         const taskList = document.getElementById('task-list')
         const inputValue = newTaskInput.value;
 
+        manageTasksAjax(event, inputValue);
+
+
         const newTask = document.createElement('li');
         newTask.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'm-0');
         newTask.innerHTML = ` <div>
@@ -24,9 +27,13 @@ function createNewTask(event) {
 }
 
 //this function deletes task
-function deleteTask() {
+function deleteTask(event) {
     const taskListItem = this.parentNode.parentNode;
+    const keyValue = taskListItem.querySelector('input').dataset.key
     taskListItem.parentNode.removeChild(taskListItem);
+
+
+    manageTasksAjax(event, '', keyValue,'delete')
 }
 
 //this function displays input which allows to modify task
@@ -51,6 +58,10 @@ function editTask(event) {
     const taskName = this.parentNode.parentNode.querySelector('span');
     if (event.key === 'Enter' && taskInput.value !== '') {
         taskName.textContent = taskInput.value;
+        const keyValue = taskInput.dataset.key
+        manageTasksAjax(event,taskInput.value, keyValue, )
+
+
         taskInput.value = '';
         taskInput.classList.add('d-none');
         taskInput.classList.remove('active-input');
@@ -77,11 +88,13 @@ function toggleTaskStatus(listItem) {
 }
 
 
-function toggleDoneStatus() {
+function toggleDoneStatus(event) {
     this.classList.toggle('fa-check');
     this.classList.toggle('text-success');
     this.classList.toggle('fa-times');
     this.classList.toggle('text-danger');
+    const keyValue = this.parentNode.querySelector('input').dataset.key;
+    manageTasksAjax(event,'',keyValue,'change');
     toggleTaskStatus(this.parentNode)
 }
 
