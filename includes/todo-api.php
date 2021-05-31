@@ -11,10 +11,10 @@ function manage_tasks_ajax_action(){
 
 
     if($_REQUEST['name']!== ''&& $_REQUEST['key'] === '10000'){
-        create_new_task(sanitize_key($_REQUEST['name']));
+        create_new_task(sanitize_text_field($_REQUEST['name']));
     }
     if($_REQUEST['name']!== ''&& $_REQUEST['key'] !== '10000'){
-        edit_task(sanitize_key($_REQUEST['name']), sanitize_key($_REQUEST['key']));
+        edit_task(sanitize_text_field($_REQUEST['name']), sanitize_key($_REQUEST['key']));
     }
 
     if($_REQUEST['name']=== ''&& $_REQUEST['key'] !== '10000' && $_REQUEST['type']!== ''){
