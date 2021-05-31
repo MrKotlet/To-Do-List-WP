@@ -10,17 +10,11 @@ function createNewTask(event) {
         manageTasksAjax(event, inputValue);
 
 
-        let lastTaskKey = newTaskInput.dataset.count;
-        lastTaskKey++;
-        newTaskInput.dataset.count = lastTaskKey;
-
-
         const newTask = document.createElement('li');
         newTask.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'm-0');
         newTask.innerHTML = ` <div>
-                            <i class="fas fa-check text-success mx-2 toggle-task-done" role="button"></i>
-                                    <span>${inputValue}</span>
-                            <input type="text" class="d-none" data-key="${lastTaskKey}">
+                            <i class="fas fa-check text-success mx-2 toggle-task-done" role="button"></i>${inputValue}
+
                         </div>
                         <div>
                             <i class="fas fa-pen mx-2 task-option"></i><i class="fas fa-trash task-option"></i>
@@ -39,15 +33,13 @@ function deleteTask(event) {
     taskListItem.parentNode.removeChild(taskListItem);
 
 
-    manageTasksAjax(event, '', keyValue, 'delete')
+    manageTasksAjax(event, '', keyValue,'delete')
 }
 
 //this function displays input which allows to modify task
 function openTaskEditor() {
     const taskInput = this.parentNode.parentNode.querySelector('input');
     const taskName = this.parentNode.parentNode.querySelector('span');
-
-
     taskName.classList.add('d-none');
 
     taskInput.classList.remove('d-none');
@@ -67,7 +59,7 @@ function editTask(event) {
     if (event.key === 'Enter' && taskInput.value !== '') {
         taskName.textContent = taskInput.value;
         const keyValue = taskInput.dataset.key
-        manageTasksAjax(event, taskInput.value, keyValue,)
+        manageTasksAjax(event,taskInput.value, keyValue, )
 
 
         taskInput.value = '';
@@ -86,21 +78,13 @@ function editTask(event) {
 // this functions changes appearance of a task depending on if it's done or not;
 
 function toggleTaskStatus(listItem) {
-    const doneList = document.getElementById('task-list-2');
-    const notDoneList = document.getElementById('task-list');
-
-    if (listItem.classList.contains('text-secondary')) {
-        doneList.removeChild(listItem);
-        notDoneList.appendChild(listItem)
-    } else {
-        notDoneList.removeChild(listItem);
-        doneList.appendChild(listItem);
-
-    }
-
     listItem.classList.toggle('text-decoration-line-through');
     listItem.classList.toggle('text-secondary');
-
+    const taskOptionButtons = listItem.querySelectorAll('.task-option');
+    taskOptionButtons.forEach(option => {
+        console.log(option)
+        option.classList.toggle('text-secondary')
+    })
 }
 
 
@@ -110,8 +94,8 @@ function toggleDoneStatus(event) {
     this.classList.toggle('fa-times');
     this.classList.toggle('text-danger');
     const keyValue = this.parentNode.querySelector('input').dataset.key;
-    manageTasksAjax(event, '', keyValue, 'change');
-    toggleTaskStatus(this.parentNode.parentNode)
+    manageTasksAjax(event,'',keyValue,'change');
+    toggleTaskStatus(this.parentNode)
 }
 
 
