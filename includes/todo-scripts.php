@@ -9,20 +9,20 @@ function todo_enqueue_admin_scripts($hook)
         'todo-plugin-bootstrap',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
         ['jquery'],
-        time()
+        'v1'
     );
     wp_register_script(
         'todo-plugin-ajax',
         TODO_URL . 'assets/js/todo-ajax.js',
         ['jquery'],
-        time()
+        'v1'
     );
 
     wp_register_script(
         'todo-plugin-main',
         TODO_URL . 'assets/js/todo-main.js',
         ['todo-plugin-ajax'],
-        time()
+        'v1'
     );
 
     wp_localize_script(
