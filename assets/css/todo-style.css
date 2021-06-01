@@ -1,5 +1,5 @@
 @import url("https://use.typekit.net/row7rwf.css");
-
+/*whole page styling and variables*/
 body {
     --main-font: zeitung, sans-serif;
     --primary-color: #cb5858;
@@ -12,6 +12,8 @@ div.todolist {
     font-family: var(--main-font);
 }
 
+
+/*headers*/
 h1.text-center {
     font-size: 3rem;
 }
@@ -26,6 +28,7 @@ h1.text-center:first-letter, h3.list-title:first-letter {
     color: var(--primary-color);
 }
 
+
 hr {
     border: solid;
     border-width: 1px;
@@ -33,7 +36,7 @@ hr {
     opacity: 1;
 }
 
-
+/*inputs*/
 div.todolist input {
     border: none;
     border-radius: 0;
@@ -54,11 +57,13 @@ div.todolist input:focus {
     color: var(--primary-color);
 }
 
+
+/*task list*/
 ul#task-list, ul#task-list-2 {
     font-size: 1.3rem;
 }
 
-ul#task-list i:hover{
+ul#task-list i:hover {
     color: var(--inactive-color);
 }
 
@@ -67,10 +72,12 @@ ul#task-list-2 span {
     text-decoration: line-through;
 }
 
-ul#task-list-2 i:hover{
+ul#task-list-2 i:hover {
     color: black;
 }
 
+
+/*buttons and icons*/
 div.todolist i {
     margin-left: 20px;
 }
@@ -79,7 +86,7 @@ i.fa-pen {
     text-decoration: none !important;
 }
 
-button.btn-outline-success{
+button.btn-outline-success {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
 }

@@ -1,3 +1,7 @@
+
+// only ajax function sending data to admin-ajax.php
+
+
 function manageTasksAjax(event, taskName, key = 10000, type = '') {
     event.preventDefault();
 
@@ -11,12 +15,12 @@ function manageTasksAjax(event, taskName, key = 10000, type = '') {
             'type': type,
             'nonce': todo_ajax_obj.nonce
         },
-        success: function (data) {
+        success: function () {
 
-            console.log(data);
+            console.log('changes saved');
         },
         error: function (errorThrown) {
-            console.log(errorThrown);
+            alert(errorThrown);
         }
     });
 

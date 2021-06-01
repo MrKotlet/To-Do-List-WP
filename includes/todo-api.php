@@ -1,6 +1,8 @@
 <?php
 
 
+//only one api action calliing function depending on data recieved and verifying nonce
+
 function manage_tasks_ajax_action(){
 
     $nonce = $_REQUEST['nonce'];
@@ -31,6 +33,9 @@ die();
 
 
 add_action( 'wp_ajax_todo_ajax_request', 'manage_tasks_ajax_action' );
+
+
+//functions managing tasks
 
 function create_new_task($name){
     $tasks = get_option('todo_task_list');

@@ -1,5 +1,8 @@
 <?php
 
+
+//registering option which value is table with tasks
+
 function todo_list_options(){
 
     add_option('todo_task_list', [
